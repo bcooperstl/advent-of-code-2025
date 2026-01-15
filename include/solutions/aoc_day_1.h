@@ -10,11 +10,13 @@ namespace Day1
         private:
             int m_position;
             int m_number_times_at_zero;
+            int m_number_times_ending_at_zero;
         public:
             Dial();
             ~Dial();
             void process_move(string move);
             int get_number_times_at_zero();
+            int get_number_times_ending_at_zero();
     };
 }
 
@@ -26,7 +28,7 @@ class AocDay1 : public AocDay
         AocDay1();
         ~AocDay1();
         string part1(string filename, vector<string> extra_args);
-        //string part2(string filename, vector<string> extra_args);
+        string part2(string filename, vector<string> extra_args);
 };
 
 #endif

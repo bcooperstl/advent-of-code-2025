@@ -19,6 +19,7 @@ namespace Day1
     {
         m_position = DIAL_INITIAL_POSITION;
         m_number_times_at_zero = 0;
+        m_number_times_ending_at_zero = 0;
     }
     
     Dial::~Dial()
@@ -32,6 +33,10 @@ namespace Day1
 #ifdef DEBUG_DAY_1
         cout << "Dial moving from " << m_position << " by " << value << " direction " << direction << " ";
 #endif
+        
+        m_number_times_at_zero += (value / DIAL_NUM_POSITIONS);
+        value = value % DIAL_NUM_POSITIONS;
+        
         if (direction == 'L')
         {
             // moving left - subtract
@@ -57,6 +62,7 @@ namespace Day1
         if (m_position == 0)
         {
             m_number_times_at_zero++;
+            m_number_times_ending_at_zero++;
         }
         return;
     }
@@ -64,6 +70,11 @@ namespace Day1
     int Dial::get_number_times_at_zero()
     {
         return m_number_times_at_zero;
+    }
+
+    int Dial::get_number_times_ending_at_zero()
+    {
+        return m_number_times_ending_at_zero;
     }
 }
 
@@ -88,6 +99,20 @@ vector<string> AocDay1::read_input(string filename)
 }
 
 string AocDay1::part1(string filename, vector<string> extra_args)
+{
+    vector<string> data = read_input(filename);
+    Dial dial;
+    for (vector<string>::iterator iter = data.begin(); iter != data.end(); ++iter)
+    {
+        dial.process_move(*iter);
+    }
+    
+    ostringstream out;
+    out << dial.get_number_times_ending_at_zero();
+    return out.str();
+}
+
+string AocDay1::part2(string filename, vector<string> extra_args)
 {
     vector<string> data = read_input(filename);
     Dial dial;
