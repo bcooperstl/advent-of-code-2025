@@ -3,6 +3,21 @@
 
 #include "aoc_day.h"
 
+namespace Day1
+{
+    class Dial
+    {
+        private:
+            int m_position;
+            int m_number_times_at_zero;
+        public:
+            Dial();
+            ~Dial();
+            void process_move(string move);
+            int get_number_times_at_zero();
+    };
+}
+
 class AocDay1 : public AocDay
 {
     private:
@@ -13,6 +28,5 @@ class AocDay1 : public AocDay
         string part1(string filename, vector<string> extra_args);
         //string part2(string filename, vector<string> extra_args);
 };
-
 
 #endif
