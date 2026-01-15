@@ -31,11 +31,15 @@ namespace Day1
         char direction = move[0];
         int value = strtol(move.c_str()+1, NULL, 10);
 #ifdef DEBUG_DAY_1
-        cout << "Dial moving from " << m_position << " by " << value << " direction " << direction << " ";
+        cout << "Dial moving from " << m_position << " by " << value << " direction " << direction << endl;
 #endif
         
         m_number_times_at_zero += (value / DIAL_NUM_POSITIONS);
+#ifdef DEBUG_DAY_1
+        cout << "  Performs " << (value / DIAL_NUM_POSITIONS) << " full rotations " << endl;
+#endif
         value = value % DIAL_NUM_POSITIONS;
+        int prior_position = m_position;
         
         if (direction == 'L')
         {
@@ -45,11 +49,41 @@ namespace Day1
             {
                 m_position+=DIAL_NUM_POSITIONS;
             }
+
+            if (m_position == 0)
+            {
+#ifdef DEBUG_DAY_1
+                cout << "  Ends at zero" << endl;
+#endif
+                m_number_times_at_zero++;
+            }
+            else if (prior_position != 0 && (m_position > prior_position))
+            {
+#ifdef DEBUG_DAY_1
+                cout << "  Crossed zero" << endl;
+#endif
+                m_number_times_at_zero++;
+            }
         }
         else if (direction == 'R')
         {
             // moving right - add
             m_position = ((m_position + value) % DIAL_NUM_POSITIONS);
+
+            if (m_position == 0)
+            {
+#ifdef DEBUG_DAY_1
+                cout << "  Ends at zero" << endl;
+#endif
+                m_number_times_at_zero++;
+            }
+            else if (m_position < prior_position)
+            {
+#ifdef DEBUG_DAY_1
+                cout << "  Crossed zero" << endl;
+#endif
+                m_number_times_at_zero++;
+            }
         }
         else
         {
@@ -57,11 +91,10 @@ namespace Day1
             return;
         }
 #ifdef DEBUG_DAY_1
-        cout << "ends at " << m_position << endl;
+        cout << "  Ends at " << m_position << endl;
 #endif
         if (m_position == 0)
         {
-            m_number_times_at_zero++;
             m_number_times_ending_at_zero++;
         }
         return;
