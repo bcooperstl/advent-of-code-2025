@@ -14,10 +14,12 @@ namespace Day2
             long long int m_low;
             long long int m_high;
             long long int get_sum_invalid_ids(long long int low, long long int high, long long int split_divisor);
+            long long int get_sum_invalid_ids_expanded(long long int low, long long int high, int length);
         public:
             Range(string low, string high);
             ~Range();
             long long int get_sum_invalid_ids();
+            long long int get_sum_invalid_ids_expanded();
     };
 }
 
@@ -29,7 +31,7 @@ class AocDay2 : public AocDay
         AocDay2();
         ~AocDay2();
         string part1(string filename, vector<string> extra_args);
-        //string part2(string filename, vector<string> extra_args);
+        string part2(string filename, vector<string> extra_args);
 };
 
 #endif

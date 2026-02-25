@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
+#include <set>
 
 #include "aoc_day_2.h"
 #include "file_utils.h"
@@ -100,6 +101,213 @@ namespace Day2
         }
         return 0;
     }
+    
+    long long int Range::get_sum_invalid_ids_expanded(long long int low, long long int high, int length)
+    {
+        set<long long int> invalid_ids;
+        long long int left_half_low, left_half_high, check_value;
+#ifdef DEBUG_DAY_2
+        cout << "Checking for invalid ids between " << low << " and " << high << " with length " << length << endl;
+#endif
+        if (length < 2)
+        {
+#ifdef DEBUG_DAY_2
+            cout << " Length less than 2; nothing to find." << endl;
+#endif            
+            return 0;
+        }
+        
+        if (length == 2)
+        {
+            left_half_low = low / 10ll; // 10 as long long
+            left_half_high = high / 10ll; // 10 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 2. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 10) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+        
+        if (length == 3)
+        {
+            left_half_low = low / 100ll; // 100 as long long
+            left_half_high = high / 100ll; // 100 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 3. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 100) + (current * 10) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+        
+        if (length == 4)
+        {
+            left_half_low = low / 1000ll; // 1000 as long long
+            left_half_high = high / 1000ll; // 1000 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 4. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 1000) + (current * 100) + (current * 10) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+            left_half_low = low / 100ll; // 10 as long long
+            left_half_high = high / 100ll; // 10 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 4. checking if 2 digits repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 100) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+        
+        if (length == 5)
+        {
+            left_half_low = low / 10000ll; // 10000 as long long
+            left_half_high = high / 10000ll; // 10000 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 5. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 10000) + (current * 1000) + (current * 100) + (current * 10) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+        
+        if (length == 6)
+        {
+            left_half_low = low / 100000ll; // 100000 as long long
+            left_half_high = high / 100000ll; // 100000 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 6. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 100000) + (current * 10000) + (current * 1000) + (current * 100) + (current * 10) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+
+            left_half_low = low / 10000ll; // 10 as long long
+            left_half_high = high / 10000ll; // 10 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 6. checking if 2 digits repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 10000) + (current * 100) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+
+            left_half_low = low / 1000ll; // 10 as long long
+            left_half_high = high / 1000ll; // 10 as long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 6. checking if 3 digits repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 1000) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+        
+        long long int sum=0;
+        for (set<long long int>::iterator pos = invalid_ids.begin(); pos != invalid_ids.end(); ++pos)
+        {
+            sum+=(*pos);
+        }
+        
+        return sum;
+    }
+        
+
+    long long int Range::get_sum_invalid_ids_expanded()
+    {
+        // low and high are either the same length or high is 1 character longer than low
+        
+        if (m_low_str.length() == m_high_str.length())
+        {
+            // if they are they same length, do simple processing of 1 range
+            return get_sum_invalid_ids_expanded(m_low, m_high, m_low_str.length());
+        }
+        else
+        {
+            // different lengths = sum the values from the 2 ranges
+            int low_len = m_low_str.length();
+            int high_len = m_high_str.length();
+            return   get_sum_invalid_ids_expanded(m_low, 
+                                         m_low_high_divisor_lookup[low_len][1], 
+                                         low_len)
+                   + get_sum_invalid_ids_expanded(m_low_high_divisor_lookup[high_len][0], 
+                                         m_high, 
+                                         high_len);
+        }
+        return 0;
+    }
 }
 
 AocDay2::AocDay2():AocDay(2)
@@ -137,6 +345,20 @@ string AocDay2::part1(string filename, vector<string> extra_args)
     for (vector<Range>::iterator iter = data.begin(); iter != data.end(); ++iter)
     {
         sum+= (*iter).get_sum_invalid_ids();
+    }
+    
+    ostringstream out;
+    out << sum;
+    return out.str();
+}
+
+string AocDay2::part2(string filename, vector<string> extra_args)
+{
+    long long int sum = 0;
+    vector<Range> data = read_input(filename);
+    for (vector<Range>::iterator iter = data.begin(); iter != data.end(); ++iter)
+    {
+        sum+= (*iter).get_sum_invalid_ids_expanded();
     }
     
     ostringstream out;
