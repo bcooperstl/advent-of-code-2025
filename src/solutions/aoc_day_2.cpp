@@ -43,13 +43,61 @@ namespace Day2
     {
     }
     
-    long long int Range::get_sum_invalid_ids(long long int low, long long int high, int length)
+    long long int Range::get_sum_invalid_ids(long long int low, long long int high, long long int split_divisor)
     {
-        return 0;
+        long long int sum=0;
+#ifdef DEBUG_DAY_2
+        cout << "Checking for invalid ids between " << low << " and " << high << " using split divisor " << split_divisor << endl;
+#endif
+        if (split_divisor == 0)
+        {
+#ifdef DEBUG_DAY_2
+            cout << " Split divisor is 0; nothing to find." << endl;
+#endif            
+            return 0;
+        }
+        
+        long long int left_half_low = low / split_divisor;
+        long long int left_half_high = high / split_divisor;
+#ifdef DEBUG_DAY_2
+        cout << " Checking left halves between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+        for (long long int current = left_half_low; current <= left_half_high; current++)
+        {
+            long long int check_value = (current * split_divisor) + current;
+            if ((check_value >= low) && (check_value <= high))
+            {
+#ifdef DEBUG_DAY_2
+                cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                sum+=check_value;
+            }
+        }
+        
+        return sum;
     }
     
     long long int Range::get_sum_invalid_ids()
     {
+        // low and high are either the same length or high is 1 character longer than low
+        
+        if (m_low_str.length() == m_high_str.length())
+        {
+            // if they are they same length, do simple processing of 1 range
+            return get_sum_invalid_ids(m_low, m_high, m_low_high_divisor_lookup[m_low_str.length()][2]);
+        }
+        else
+        {
+            // different lengths = sum the values from the 2 ranges
+            int low_len = m_low_str.length();
+            int high_len = m_high_str.length();
+            return   get_sum_invalid_ids(m_low, 
+                                         m_low_high_divisor_lookup[low_len][1], 
+                                         m_low_high_divisor_lookup[low_len][2])
+                   + get_sum_invalid_ids(m_low_high_divisor_lookup[high_len][0], 
+                                         m_high, 
+                                         m_low_high_divisor_lookup[high_len][2]);
+        }
         return 0;
     }
 }

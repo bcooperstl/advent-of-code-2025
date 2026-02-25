@@ -13,7 +13,7 @@ namespace Day2
             string m_high_str;
             long long int m_low;
             long long int m_high;
-            long long int get_sum_invalid_ids(long long int low, long long int high, int length);
+            long long int get_sum_invalid_ids(long long int low, long long int high, long long int split_divisor);
         public:
             Range(string low, string high);
             ~Range();
