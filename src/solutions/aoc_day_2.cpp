@@ -119,15 +119,15 @@ namespace Day2
         
         if (length == 2)
         {
-            left_half_low = low / 10ll; // 10 as long long
-            left_half_high = high / 10ll; // 10 as long long
+            left_half_low = low / 10ll; // long long
+            left_half_high = high / 10ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 2. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 10) + current;
+                check_value = (current * 10ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -140,15 +140,15 @@ namespace Day2
         
         if (length == 3)
         {
-            left_half_low = low / 100ll; // 100 as long long
-            left_half_high = high / 100ll; // 100 as long long
+            left_half_low = low / 100ll; // long long
+            left_half_high = high / 100ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 3. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 100) + (current * 10) + current;
+                check_value = (current * 100ll) + (current * 10ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -161,15 +161,15 @@ namespace Day2
         
         if (length == 4)
         {
-            left_half_low = low / 1000ll; // 1000 as long long
-            left_half_high = high / 1000ll; // 1000 as long long
+            left_half_low = low / 1000ll; // long long
+            left_half_high = high / 1000ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 4. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 1000) + (current * 100) + (current * 10) + current;
+                check_value = (current * 1000ll) + (current * 100ll) + (current * 10ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -178,15 +178,15 @@ namespace Day2
                     invalid_ids.insert(check_value);
                 }
             }
-            left_half_low = low / 100ll; // 10 as long long
-            left_half_high = high / 100ll; // 10 as long long
+            left_half_low = low / 100ll; // long long
+            left_half_high = high / 100ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 4. checking if 2 digits repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 100) + current;
+                check_value = (current * 100ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -199,15 +199,15 @@ namespace Day2
         
         if (length == 5)
         {
-            left_half_low = low / 10000ll; // 10000 as long long
-            left_half_high = high / 10000ll; // 10000 as long long
+            left_half_low = low / 10000ll; // long long
+            left_half_high = high / 10000ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 5. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 10000) + (current * 1000) + (current * 100) + (current * 10) + current;
+                check_value = (current * 10000ll) + (current * 1000ll) + (current * 100ll) + (current * 10ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -220,15 +220,15 @@ namespace Day2
         
         if (length == 6)
         {
-            left_half_low = low / 100000ll; // 100000 as long long
-            left_half_high = high / 100000ll; // 100000 as long long
+            left_half_low = low / 100000ll; // long long
+            left_half_high = high / 100000ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 6. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 100000) + (current * 10000) + (current * 1000) + (current * 100) + (current * 10) + current;
+                check_value = (current * 100000ll) + (current * 10000ll) + (current * 1000ll) + (current * 100ll) + (current * 10ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -238,15 +238,15 @@ namespace Day2
                 }
             }
 
-            left_half_low = low / 10000ll; // 10 as long long
-            left_half_high = high / 10000ll; // 10 as long long
+            left_half_low = low / 10000ll; // long long
+            left_half_high = high / 10000ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 6. checking if 2 digits repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 10000) + (current * 100) + current;
+                check_value = (current * 10000ll) + (current * 100ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -256,15 +256,36 @@ namespace Day2
                 }
             }
 
-            left_half_low = low / 1000ll; // 10 as long long
-            left_half_high = high / 1000ll; // 10 as long long
+            left_half_low = low / 1000ll; // long long
+            left_half_high = high / 1000ll; // long long
             
 #ifdef DEBUG_DAY_2
             cout << " Length 6. checking if 3 digits repeats between " << left_half_low << " and " << left_half_high << endl;
 #endif            
             for (long long int current = left_half_low; current <= left_half_high; current++)
             {
-                check_value = (current * 1000) + current;
+                check_value = (current * 1000ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+
+        if (length == 7)
+        {
+            left_half_low = low / 1000000ll; // long long
+            left_half_high = high / 1000000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 7. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 1000000ll) + (current * 100000ll) + (current * 10000ll) + (current * 1000ll) + (current * 100ll) + (current * 10ll) + current;
                 if ((check_value >= low) && (check_value <= high))
                 {
 #ifdef DEBUG_DAY_2
@@ -275,6 +296,160 @@ namespace Day2
             }
         }
         
+        if (length == 8)
+        {
+            left_half_low = low / 10000000ll; // long long
+            left_half_high = high / 10000000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 8. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 10000000ll) + (current * 1000000ll) + (current * 100000ll) + (current * 10000ll) + (current * 1000ll) + (current * 100ll) + (current * 10ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+
+            left_half_low = low / 1000000ll; // long long
+            left_half_high = high / 1000000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 8. checking if 2 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 1000000ll) + (current * 10000ll) + (current * 100ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+
+            left_half_low = low / 10000ll; // long long
+            left_half_high = high / 10000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 8. checking if 4 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 10000ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+        
+        if (length == 9)
+        {
+            left_half_low = low / 100000000ll; // long long
+            left_half_high = high / 100000000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 9. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 100000000ll) + (current * 10000000ll) + (current * 1000000ll) + (current * 100000ll) + (current * 10000ll) + (current * 1000ll) + (current * 100ll) + (current * 10ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+
+            left_half_low = low / 1000000ll; // long long
+            left_half_high = high / 1000000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 9. checking if 3 digits repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 1000000ll) + (current * 1000ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+        }
+
+        if (length == 10)
+        {
+            left_half_low = low / 1000000000ll; // long long
+            left_half_high = high / 1000000000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 10. checking if 1 digit repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 1000000000ll) + (current * 100000000ll) + (current * 10000000ll) + (current * 1000000ll) + (current * 100000ll) + (current * 10000ll) + (current * 1000ll) + (current * 100ll) + (current * 10ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+
+            left_half_low = low / 100000000ll; // long long
+            left_half_high = high / 100000000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 10. checking if 2 digits repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 100000000ll) + (current * 1000000ll) + (current * 10000ll) + (current * 100ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+            
+            left_half_low = low / 100000ll; // long long
+            left_half_high = high / 100000ll; // long long
+            
+#ifdef DEBUG_DAY_2
+            cout << " Length 10. checking if 5 digits repeats between " << left_half_low << " and " << left_half_high << endl;
+#endif            
+            for (long long int current = left_half_low; current <= left_half_high; current++)
+            {
+                check_value = (current * 100000ll) + current;
+                if ((check_value >= low) && (check_value <= high))
+                {
+#ifdef DEBUG_DAY_2
+                    cout << "  Invalid ID " << check_value << " found" << endl;
+#endif            
+                    invalid_ids.insert(check_value);
+                }
+            }
+
+        }
+
         long long int sum=0;
         for (set<long long int>::iterator pos = invalid_ids.begin(); pos != invalid_ids.end(); ++pos)
         {
@@ -283,7 +458,7 @@ namespace Day2
         
         return sum;
     }
-        
+    
 
     long long int Range::get_sum_invalid_ids_expanded()
     {
