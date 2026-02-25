@@ -42,6 +42,16 @@ namespace Day2
     Range::~Range()
     {
     }
+    
+    long long int Range::get_sum_invalid_ids(long long int low, long long int high, int length)
+    {
+        return 0;
+    }
+    
+    long long int Range::get_sum_invalid_ids()
+    {
+        return 0;
+    }
 }
 
 AocDay2::AocDay2():AocDay(2)
@@ -64,7 +74,7 @@ vector<Range> AocDay2::read_input(string filename)
         return ranges;
     }
     
-    for (int i=0; data[0].size(); i+=2)
+    for (int i=0; i<data[0].size(); i+=2)
     {
         ranges.push_back(Range(data[0][i], data[0][i+1]));
     }
