@@ -80,27 +80,29 @@ namespace Day3
         cout << "Finding largest starting at " << start_pos << " and leaving " << digits_after << " after" << endl;
 #endif
         int pos = start_pos;
+        int found_pos = pos;
         char largest = m_batteries[pos];
 #ifdef DEBUG_DAY_3_DETAIL
-        cout << " Starting with pos " << pos << " having value " << (int) largest << endl;
+        cout << " Starting with pos " << pos << " having value " << (int) largest << " and checking through position " << ((m_num_batteries - 1) - digits_after) << endl;
 #endif
         ++pos;
-        while (pos < ((m_num_batteries - 1) - digits_after))
+        while (pos <= ((m_num_batteries - 1) - digits_after))
         {
             if (m_batteries[pos] > largest)
             {
                 largest = m_batteries[pos];
+                found_pos = pos;
 #ifdef DEBUG_DAY_3_DETAIL
-                cout << " Larger value at pos " << pos << " having value " << (int) largest << endl;
+                cout << " Larger value at pos " << found_pos << " having value " << (int) largest << endl;
 #endif
             }
             ++pos;
         }
         
 #ifdef DEBUG_DAY_3_DETAIL
-        cout << " Final results is pos " << pos << " having value " << (int) largest << endl;
+        cout << " Final results is pos " << found_pos << " having value " << (int) largest << endl;
 #endif
-        return pos;
+        return found_pos;
     }
     
     long long int Bank::get_max_large_joltage()
@@ -115,11 +117,12 @@ namespace Day3
         
         for (int i=0; i<12; i++)
         {
-            target_pos = find_first_largest_pos(target_pos, 12 - i);
+            target_pos = find_first_largest_pos(target_pos, 11 - i);
             max_joltage = max_joltage * (10ll) + (long long int)m_batteries[target_pos];
 #ifdef DEBUG_DAY_3
             cout << " Using " << (int) m_batteries[target_pos] << " from position " << target_pos << endl;
 #endif
+            target_pos++;
         }
                 
 #ifdef DEBUG_DAY_3
