@@ -12,10 +12,12 @@ namespace Day3
         private:
             int m_num_batteries;
             char m_batteries[BANK_MAX_BATTERIES];
+            int find_first_largest_pos(int start_pos, int digits_after);
         public:
             Bank(string input);
             ~Bank();
             int get_max_joltage();
+            long long int get_max_large_joltage();
     };
 }
 
@@ -29,7 +31,7 @@ class AocDay3 : public AocDay
         AocDay3();
         ~AocDay3();
         string part1(string filename, vector<string> extra_args);
-        //string part2(string filename, vector<string> extra_args);
+        string part2(string filename, vector<string> extra_args);
 };
 
 #endif
