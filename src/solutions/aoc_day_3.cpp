@@ -94,6 +94,7 @@ namespace Day3
                 cout << " Larger value at pos " << pos << " having value " << (int) largest << endl;
 #endif
             }
+            ++pos;
         }
         
 #ifdef DEBUG_DAY_3_DETAIL
