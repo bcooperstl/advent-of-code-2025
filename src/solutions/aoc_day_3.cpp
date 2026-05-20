@@ -36,7 +36,7 @@ namespace Day3
         largest_values[1] = m_batteries[1];
         
 #ifdef DEBUG_DAY_3
-        cout << " Initial values " << largest_values[0] << "," << largest_values[1] << endl;
+        cout << " Initial values " << (int) largest_values[0] << "," << (int) largest_values[1] << endl;
 #endif
         for (int i=1; i<(m_num_batteries - 1); i++)
         {
@@ -44,8 +44,8 @@ namespace Day3
             if (m_batteries[i] > largest_values[0])
             {
 #ifdef DEBUG_DAY_3
-                cout << " Larger first value " << m_batteries[i] << " found at position " << i << endl;
-                cout << "  second value is " << m_batteries[i+1] << endl;
+                cout << " Larger first value " << (int) m_batteries[i] << " found at position " << i << endl;
+                cout << "  second value is " << (int) m_batteries[i+1] << endl;
 #endif
                 largest_values[0] = m_batteries[i];
                 largest_values[1] = m_batteries[i+1];
@@ -53,9 +53,9 @@ namespace Day3
             else if (m_batteries[i] > largest_values[1])
             {
 #ifdef DEBUG_DAY_3
-                cout << " Larger sescond value " << m_batteries[i] << " found at position " << i << endl;
+                cout << " Larger second value " << (int) m_batteries[i] << " found at position " << i << endl;
 #endif
-                largest_values[1] - m_batteries[i];
+                largest_values[1] = m_batteries[i];
             }
         }
         
@@ -63,9 +63,9 @@ namespace Day3
         if (m_batteries[m_num_batteries-1] > largest_values[1])
         {
 #ifdef DEBUG_DAY_3
-                cout << " Larger sescond value " << m_batteries[m_num_batteries-1] << " found at position " << m_num_batteries-1 << endl;
+                cout << " Larger second value " << (int) m_batteries[m_num_batteries-1] << " found at position " << m_num_batteries-1 << endl;
 #endif
-                largest_values[1] - m_batteries[m_num_batteries-1];
+                largest_values[1] = m_batteries[m_num_batteries-1];
         }
         
 #ifdef DEBUG_DAY_3
