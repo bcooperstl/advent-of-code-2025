@@ -56,6 +56,36 @@ int AocDay4::count_accessible_bales(Screen & layout)
     return count;
 }
 
+void AocDay4::remove_accessible_bales(Screen & layout)
+{
+    vector<pair<int, int>> to_remove; // pairs stored in row,col format
+    
+    int count = 0;
+    for (int row=layout.get_min_y()+1; row<layout.get_max_y(); row++)
+    {
+        for (int col=layout.get_min_x()+1; col<layout.get_max_x(); col++)
+        {
+            if (layout.get(col, row) == SYMBOL_PAPER_ROLL)
+            {
+                if (layout.num_matching_neighbors(col, row, SYMBOL_PAPER_ROLL) < 4)
+                {
+                    to_remove.push_back(make_pair(row,col));
+                }
+            }
+        }
+    }
+    vector<pair<int, int>>::iterator pos = to_remove.begin();
+    while (pos != to_remove.end())
+    {
+        layout.set(pos->second, pos->first, SYMBOL_EMPTY);
+#ifdef DEBUG_DAY_4
+        cout << "Removing bale of paper at row=" << pos->first << " col=" << pos->second << endl;
+#endif
+        ++pos;
+    }
+    return;
+}
+
 string AocDay4::part1(string filename, vector<string> extra_args)
 {
     vector<string> data = read_input(filename);
@@ -68,6 +98,39 @@ string AocDay4::part1(string filename, vector<string> extra_args)
     cout << "Expanded map:" << endl;
     layout.display();
 #endif
+    
+    ostringstream out;
+    out << count_accessible_bales(layout);
+    return out.str();
+}
+
+string AocDay4::part2(string filename, vector<string> extra_args)
+{
+    vector<string> data = read_input(filename);
+    
+    Screen layout;
+    layout.load(data,1,1);
+    layout.expand(SYMBOL_EMPTY);
+
+#ifdef DEBUG_DAY_4
+    cout << "Expanded map:" << endl;
+    layout.display();
+#endif
+    
+    int current = 0;
+    int total = 0;
+    
+    current = count_accessible_bales(layout);
+    while (current > 0)
+    {
+        total+=current;
+        remove_accessible_bales(layout);
+#ifdef DEBUG_DAY_4
+        cout << "Updated map:" << endl;
+        layout.display();
+#endif
+        current = count_accessible_bales(layout);
+    }
     
     ostringstream out;
     out << count_accessible_bales(layout);
