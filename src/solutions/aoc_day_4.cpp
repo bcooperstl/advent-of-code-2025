@@ -37,9 +37,9 @@ vector<string> AocDay4::read_input(string filename)
 int AocDay4::count_accessible_bales(Screen & layout)
 {
     int count = 0;
-    for (int row=layout.get_min_y()+1; row<layout.get_max_y()-1; row++)
+    for (int row=layout.get_min_y()+1; row<layout.get_max_y(); row++)
     {
-        for (int col=layout.get_min_x()+1; col<layout.get_max_x()-1; col++)
+        for (int col=layout.get_min_x()+1; col<layout.get_max_x(); col++)
         {
             if (layout.get(col, row) == SYMBOL_PAPER_ROLL)
             {
