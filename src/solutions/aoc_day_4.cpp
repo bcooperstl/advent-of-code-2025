@@ -123,6 +123,9 @@ string AocDay4::part2(string filename, vector<string> extra_args)
     current = count_accessible_bales(layout);
     while (current > 0)
     {
+#ifdef DEBUG_DAY_4
+        cout << "There are " << current << " bales to remove" << endl;
+#endif
         total+=current;
         remove_accessible_bales(layout);
 #ifdef DEBUG_DAY_4
@@ -133,7 +136,7 @@ string AocDay4::part2(string filename, vector<string> extra_args)
     }
     
     ostringstream out;
-    out << count_accessible_bales(layout);
+    out << total;
     return out.str();
 }
 
